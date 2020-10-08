@@ -1,4 +1,4 @@
-<button type="submit" class="btn btn-primary" name= "add">Add New</button>
+<button type="submit" class="btn btn-primary" name= "add" href="/mywebsite/insert.php">Add New</button>
 <!doctype html>
 <html lang="en">
 <head>
