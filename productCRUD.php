@@ -53,4 +53,30 @@ class ProductCRUD
             $success = -1;
         }
     }
+
+    public function deleteProduct($code){
+        $success = -1;
+        try {
+            global $connString;
+            $conn = pg_connect($connString);
+            if ($conn === false) {
+                $this->msg = "Fail";
+                return $success;
+            }
+            $query = "DELETE FROM products WHERE code=$code";
+            $params = array(&$code);
+            $res = pg_query_params($conn, $query, $params);
+            if ($res === false) {
+                $this->msg = "Error query";
+                return $success;
+            }
+            $row =  pg_affected_rows($res);
+            $success = $row;
+            $this->msg = "";
+            pg_close($conn);
+        } catch (Exception $e) {
+            $this->msg = $e->getMessage();
+            $success =-1;
+        }
+    }
 }
