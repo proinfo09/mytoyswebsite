@@ -1,5 +1,5 @@
 <?php
- include ('productRUD.php');
+ include ('productCRUD.php');
  if(isset($_POST['add'])) {
      $obj = new productRUD();
      $success = $obj -> createProduct ($_POST['code'], $_POST['image'], $_POST['name'], $_POST['price'], $_POST['details'] );
