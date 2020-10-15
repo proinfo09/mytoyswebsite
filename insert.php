@@ -31,7 +31,7 @@
     <label for="name">Product price:</label>
     <input type="text" class="form-control" id="price" placeholder="Enter name" name="price">
     <label for="name">Product detail:</label>
-    <input type="text" class="form-control" id="detail" placeholder="Enter detail" name="details">
+    <input type="text" class="form-control" id="details" placeholder="Enter details" name="details">
     <button type="submit" class="btn btn-primary" name= "add">Add New</button>
   </form>
 </div>
