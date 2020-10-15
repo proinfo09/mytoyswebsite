@@ -30,7 +30,7 @@ class ProductCRUD
         }
         return $data;
     }
-    public function createProduct($code, $image, $name, $price, $details)
+    public function createProduct($code, $name, $price, $image, $details)
     {
         $data = array();
         $success = -1;
@@ -41,9 +41,8 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $data;
             }
-            $query = 'INSERT INTO products (code, image, name, price, details)
-             VALUES ($1, $2, $3, $4, $5) returning code';
-            $params = array(&$code, &$image, &$name, &$price, &$details);
+            $query = 'INSERT INTO products VALUES ($code, $name, $price, $image, $details) returning code ';
+            $params = array(&$code, &$name, &$price, &$image, &$details);
             $res = pg_query_params($conn, $query, $params);
             $row =  pg_fetch_row($res);
             $success = $row[0];
