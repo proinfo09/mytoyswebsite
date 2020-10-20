@@ -41,10 +41,11 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $data;
             }
-            $query = 'INSERT INTO products (code, image, name, price, details) VALUES ($1, $2, $3, $4, $5) returning code ';
+            $query = 'INSERT INTO products (code, image, name, price, details) VALUES ($code, $image, $name, $price, $details) returning code ';
             $params = array(&$code, &$image, &$price, &$name, &$details);
             $res = pg_query_params($conn, $query, $params);
             $row =  pg_fetch_row($res);
+            
             $success = $row[0];
             pg_close($conn);
         } catch (Exception $e) {
