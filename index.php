@@ -39,7 +39,7 @@
                             <td><?php echo $value ?> </td> <?php } ?>
                         <td>
                             <button class="btn btn-primary">Edit</button>
-                            <td class="text-center"><a href="delete.php" onclick="return confirm('Delete ?');"><button type="button" class="btn btn-secondary">Delete</button></a></td>
+                            <td class="text-center"><a href="delete.php" onclick="return confirm('Delete ?');"><button type="summit" class="btn btn-secondary">Delete</button></a></td>
                         </td>
                     </tr>
                 </tbody>
