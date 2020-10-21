@@ -54,9 +54,11 @@ class ProductCRUD
         }
     }
 
-    public function deleteProduct($code){
+    public function deleteProduct($code1)
+    {
         $success = -1;
-        try {
+        try 
+        {
             global $connString;
             $conn = pg_connect($connString);
             if ($conn === false) {
@@ -64,7 +66,7 @@ class ProductCRUD
                 return $success;
             }
             $query = 'DELETE FROM products WHERE code=$1';
-            $params = array(&$code);
+            $params = array(&$code1);
             $res = pg_query_params($conn, $query, $params);
             if ($res === false) {
                 $this->msg = "Error query";
