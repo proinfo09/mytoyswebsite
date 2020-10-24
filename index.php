@@ -37,8 +37,10 @@
                     <tr>
                         <?php foreach ($item as $key => $value) { ?>
                             <td><?php echo $value ?> </td> <?php } ?>
-                        <td class="text-center"><a href="update.php?code1=<?= $item["code"] ?>" onclick="return confirm('Want to update ?');"><button
-                                    type="button" class="btn btn-primary">Update</button>
+                        <td class="text-center">
+                            <a href="update.php?code1=<?= $item["code"] ?> & name=<?= $item["name"] ?> & price=<?= $item["price"] ?> & image=<?= $item["image"] ?> & details=<?= $item["details"] ?>"
+                                onclick="return confirm('Want to update ?');"><button type="button"
+                                    class="btn btn-primary">Update</button>
                             </a> &nbsp; | &nbsp;
                             <a href="delete.php?code1=<?= $item["code"] ?>" onclick="return confirm('Are you sure you want to delete ?');"><button type="button"
                                     class="btn btn-danger">Delete</button></a>

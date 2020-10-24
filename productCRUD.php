@@ -80,29 +80,30 @@ class ProductCRUD
         }
     }
 
-    public function updateProduct ($code, $image, $name, $price, $details){
+    public function updateProduct($code, $name, $price, $image, $details){
         $success = -1;
-        try {
+        try { 
             global $connString;
             $conn = pg_connect($connString);
             if ($conn === false) {
                 $this->msg = "Fail";
                 return $success;
             }
-        $query = 'UPDATE public.products SET image=$2, name=$3, price=$4, details=$5 WHERE code =$1';
-        $params = array(&$code, &$image, &$name, &$price, &$details);
-        $res = pg_query_params($conn,$query,$params);
-        $num_rows = pg_connect-affected_rows ($res);
-        $success = $num_rows;
-        $this->msg = "";
-        pg_close($conn);
-        if ($res === FALSE) {
-            $this->msg = "Error in executing query.";
-            return $success;
-        }
+            $query = 'UPDATE public.products SET name = $2, price = $3, image = $4, details = $5 WHERE code= $1';
+            $params = array(&$code, &$name, &$price, &$image, &$details);
+            $res = pg_query_params($conn,$query,$params);
+            $num_rows = pg_affected_rows($res);
+            $success = $num_rows;
+            $this->msg = "";
+            pg_close($conn);
+            if ($res === false) {
+                $this->msg = "Error query";
+                return $success;
+            }
         }catch (Exception $e){
                 $this->msg = $e->getMessage();
                 $success = -1;
         }
-    } 
+        return $success;
+    }
 }
