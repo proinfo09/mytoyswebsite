@@ -20,17 +20,17 @@
 <body>
     <div class="container">
         <h2>Update Toy</h2>
+        
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
         <?php
             include('productCRUD.php');
 
             $obj = new ProductCRUD();
             $data = $obj->selectProduct();
             foreach($data as $item){
-                foreach($item as $key -> $value){
-                
+                foreach($item as $key -> $value){   
             
         ?>
-        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="code">Product Code:</label>
             <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $value ?>readonly>
             <label for="name">Product Name:</label>
@@ -43,8 +43,7 @@
             </div>
             <label for="name">Product details:</label>
             <input type="text" class="form-control" id="details" placeholder="Enter details" name="details"  VALUE = <?php echo $value ?>>
-            <?php }
-            } ?>
+            <?php } } ?>
             <button type="submit" class="btn btn-primary" name="update">Submit</button>
         </form>
 
