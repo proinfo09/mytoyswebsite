@@ -81,14 +81,13 @@ class ProductCRUD
     }
 
     public function updateProduct ($code, $image, $name, $price, $details){
-        $data = array()
         $success = -1;
         try {
             global $connString;
             $conn = pg_connect($connString);
             if ($conn === false) {
                 $this->msg = "Fail";
-                return $data;
+                return $success;
             }
         $query = 'UPDATE public.products SET image=$2, name=$3, price=$4, details=$5 WHERE code =$1;';
         $params = array(&$code, &$image, &$name, &$price, &$details);
