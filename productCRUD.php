@@ -89,6 +89,13 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $success;
             }
+            $query1 = 'SELECT code, name, price, image, details
+	                        FROM public.products WHERE code = $1';
+            $result = pg_query($conn, $query1);
+            while ($row = pg_fetch_row($result)) {
+                array_push($data, array("code" => $row[0], "image" => $row[1], "name" => $row[2], "price" => $row[3], "details" => $row[4]));
+            }
+
             $query = 'UPDATE public.products SET name = $2, price = $3, image = $4, details = $5 WHERE code= $1';
             $params = array(&$code, &$name, &$price, &$image, &$details);
             $res = pg_query_params($conn,$query,$params);
