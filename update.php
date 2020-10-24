@@ -1,7 +1,7 @@
 <?php
  include ('productCRUD.php');
  $obj = new productCRUD();
- $success = $obj -> createProduct ($_GET['code2'], $_POST['image1'], $_POST['name1'], $_POST['price1'], $_POST['details1'] );
+ $obj -> updateProduct ($_GET['code2'], $_POST['image1'], $_POST['name1'], $_POST['price1'], $_POST['details1'] );
  header ('Location: index.php');
 ?>
 
