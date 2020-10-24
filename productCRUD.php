@@ -80,14 +80,15 @@ class ProductCRUD
         }
     }
 
-    public function updateStudent ($code, $image, $name, $price, $details){
+    public function updateProduct ($code, $image, $name, $price, $details){
         $success = -1;
-        try(global $connString;
-        conn = pg_connect ($connString);
-        if($conn === false) {
-           $this -> msg = "Unable to connect PostgrSQL Server.";
-           return $success;
-        }
+        try {
+            global $connString;
+            $conn = pg_connect($connString);
+            if ($conn === false) {
+                $this->msg = "Fail";
+                return $success;
+            }
         $query = 'UPDATE public.products SET image=$2, price=$3, name=$4, details=$5 WHERE code =$1;';
         $params = array(&$code, &$image, &$price, &$name, &$details);
         $res = pg_query_params ($conn,$query,$params);
@@ -103,6 +104,5 @@ class ProductCRUD
                 $this -> msg = $e ->getMessage();
                 $success = -1;
         }
-        return $success;
-        }
+    } 
 }
