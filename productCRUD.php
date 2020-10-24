@@ -89,13 +89,6 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $success;
             }
-            $query1 = 'SELECT code, name, price, image, details
-	                        FROM public.products WHERE code = $1';
-            $result = pg_query($conn, $query1);
-            while ($row = pg_fetch_row($result)) {
-                array_push($data, array("code" => $row[0], "image" => $row[1], "name" => $row[2], "price" => $row[3], "details" => $row[4]));
-            }
-
             $query = 'UPDATE public.products SET name = $2, price = $3, image = $4, details = $5 WHERE code= $1';
             $params = array(&$code, &$name, &$price, &$image, &$details);
             $res = pg_query_params($conn,$query,$params);
@@ -111,5 +104,28 @@ class ProductCRUD
                 $this->msg = $e->getMessage();
                 $success = -1;
         }
+    }
+    public function selectProduct($code)
+    {
+        $data = array();
+        try {
+            global $connString;
+            $conn = pg_connect($connString);
+            if ($conn === false) {
+                $this->msg = "Fail";
+                return $data;
+            }
+            $query = 'SELECT code, name, price, image, details
+	                        FROM public.products WHERE code = $1';
+            $result = pg_query($conn, $query);
+            while ($row = pg_fetch_row($result)) {
+                array_push($data, array("code" => $row[0], "image" => $row[1], "name" => $row[2], "price" => $row[3], "details" => $row[4]));
+            }
+            pg_close($conn);
+        } catch (Exception $e) {
+            $this->msg = $e->getMessage();
+            echo $this->msg;
+        }
+        return $data;
     }
 }

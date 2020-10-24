@@ -20,6 +20,9 @@
 <body>
 <div class="container">
     <?php
+    include('productCRUD.php');
+    $obj = new ProductCRUD();
+    $list = $obj->selectProduct();
     foreach ($list as $item) {
             ?> <?php foreach ($item as $key => $value) { ?> 
         <h2>Update Toy</h2>
