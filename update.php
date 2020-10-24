@@ -24,9 +24,12 @@
             include('productCRUD.php');
 
             $obj = new ProductCRUD();
-            $list = $obj->selectProduct();
-            foreach ($list as $key => $value) {
-                ?>
+            $data = $obj->selectProduct();
+            foreach($data as $item){
+                foreach($item as $key -> $value){
+                
+            
+        ?>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="code">Product Code:</label>
             <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $value ?>readonly>
@@ -40,7 +43,8 @@
             </div>
             <label for="name">Product details:</label>
             <input type="text" class="form-control" id="details" placeholder="Enter details" name="details"  VALUE = <?php echo $value ?>>
-            <?php } ?>
+            <?php }
+            } ?>
             <button type="submit" class="btn btn-primary" name="update">Submit</button>
         </form>
 
