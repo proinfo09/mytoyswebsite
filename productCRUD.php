@@ -89,7 +89,7 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $success;
             }
-            $query = 'UPDATE public.products SET code = $1,name = $2, price = $3, image = $4, details = $5 WHERE code= $1';
+            $query = 'UPDATE public.products SET name = $2, price = $3, image = $4, details = $5 WHERE code= $1';
             $params = array(&$code, &$name, &$price, &$image, &$details);
             $res = pg_query_params($conn,$query,$params);
             $num_rows = pg_affected_rows($res);
