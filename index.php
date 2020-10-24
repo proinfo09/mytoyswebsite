@@ -37,10 +37,13 @@
                     <tr>
                         <?php foreach ($item as $key => $value) { ?>
                             <td><?php echo $value ?> </td> <?php } ?>
-                        <td>
-                            <button class="btn btn-primary">Edit</button>
-                            <td class="text-center"><a href="delete.php" onclick="return confirm('Delete ?');"><button type="summit" class="btn btn-secondary">Delete</button></a></td>
+                        <td class="text-center"><a href="update.php" onclick="return confirm('Want to update ?');"><button
+                                    type="button" class="btn btn-primary">Update</button>
+                            </a> &nbsp; | &nbsp;
+                            <a href="delete.php?code1=<?= $item["code"] ?>" onclick="return confirm('Are you sure you want to delete ?');"><button type="button"
+                                    class="btn btn-danger">Delete</button></a>
                         </td>
+
                     </tr>
                 </tbody>
             <?php } ?>
