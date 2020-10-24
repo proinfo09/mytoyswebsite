@@ -54,7 +54,7 @@ class ProductCRUD
         }
     }
 
-    public function deleteProduct($code1)
+    public function deleteProduct($code = false)
     {
         $success = -1;
         try 
@@ -66,7 +66,7 @@ class ProductCRUD
                 return $success;
             }
             $query = 'DELETE FROM public.products WHERE code=$1';
-            $params = array(&$code1);
+            $params = array(&$code);
             $res = pg_query_params($conn, $query, $params);
             $row =  pg_affected_rows($res);
             $success = $row;
