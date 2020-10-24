@@ -65,17 +65,18 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $success;
             }
-            $query = 'DELETE FROM products WHERE code=$code1';
+            $query = 'DELETE FROM products WHERE code=$1';
             $params = array(&$code1);
             $res = pg_query_params($conn, $query, $params);
-            if ($res === false) {
-                $this->msg = "Error query";
-                return $success;
-            }
             $row =  pg_affected_rows($res);
             $success = $row;
             $this->msg = "";
             pg_close($conn);
+            if ($res === false) {
+                $this->msg = "Error query";
+                return $success;
+            }
+           
         } catch (Exception $e) {
             $this->msg = $e->getMessage();
             $success =-1;
