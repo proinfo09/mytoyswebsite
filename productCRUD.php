@@ -95,7 +95,6 @@ class ProductCRUD
         $row =  pg_affetched_row($res);
         $success = $row;
         $this->msg = "";
-        $this->msg = "";
         pg_close($conn);
         if ($res === FALSE) {
             $this->msg = "Error in executing query.";
