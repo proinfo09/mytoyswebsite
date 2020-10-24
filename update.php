@@ -18,11 +18,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="container">
+<div class="container">
+    <?php
+    foreach ($list as $item) {
+            ?> <?php foreach ($item as $key => $value) { ?> 
         <h2>Update Toy</h2>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="code">Product Code:</label>
-            <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $value ?>readonly>
+            <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $value ?><?php } ?>readonly>
             <label for="name">Product Name:</label>
             <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"  VALUE = <?php echo $_GET['name'] ?>>
             <label for="name">Product Price:</label>
