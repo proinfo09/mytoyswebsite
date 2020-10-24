@@ -104,6 +104,5 @@ class ProductCRUD
                 $this->msg = $e->getMessage();
                 $success = -1;
         }
-        return $success;
     }
 }
