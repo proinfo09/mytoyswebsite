@@ -20,21 +20,30 @@
 <body>
     <div class="container">
         <h2>Update Toy</h2>
+        <?php
+            include('productCRUD.php');
+
+            $obj = new ProductCRUD();
+            $list = $obj->selectProduct();
+            foreach ($list as $key => $value) {
+                ?>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="code">Product Code:</label>
-            <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $_GET['code1'] ?>readonly>
+            <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $value ?>readonly>
             <label for="name">Product Name:</label>
-            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"  VALUE = <?php echo $_GET['name'] ?>>
+            <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"  VALUE = <?php echo $value ?>>
             <label for="name">Product Price:</label>
-            <input type="number" class="form-control" id="price" placeholder="Enter price" name="price"  VALUE = <?php echo $_GET['price'] ?>>
+            <input type="number" class="form-control" id="price" placeholder="Enter price" name="price"  VALUE = <?php echo $value ?>>
             <div class="form-group">
                 <label for="exampleFormControlFile1">Image</label>
-                <input type="file" class="form-control-file" name="image"  VALUE = <?php echo $_GET['image'] ?>>
+                <input type="file" class="form-control-file" name="image"  VALUE = <?php echo $value ?>>
             </div>
             <label for="name">Product details:</label>
-            <input type="text" class="form-control" id="details" placeholder="Enter details" name="details"  VALUE = <?php echo $_GET['details'] ?>>
+            <input type="text" class="form-control" id="details" placeholder="Enter details" name="details"  VALUE = <?php echo $value ?>>
+            <?php } ?>
             <button type="submit" class="btn btn-primary" name="update">Submit</button>
         </form>
+
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
