@@ -1,7 +1,7 @@
 <?php
  include ('productCRUD.php');
  $obj = new productCRUD();
- $obj -> updateProduct ($_GET['code2'], $_POST['image1'], $_POST['name1'], $_POST['price1'], $_POST['details1'] );
+ $obj -> updateProduct ($_POST['code'], $_POST['image'], $_POST['name'], $_POST['price'], $_POST['details'] );
  header ('Location: index.php');
 ?>
 
@@ -21,13 +21,13 @@
   <h2>Update item</h2>
   <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
     <label for="name">Product image:</label>
-    <input type="text" class="form-control" id="image1" placeholder="Enter image" name="image1">
+    <input type="text" class="form-control" id="image1" placeholder="Enter image" name="image">
     <label for="name">Product name:</label>
-    <input type="text" class="form-control" id="name1" placeholder="Enter name" name="name1">
+    <input type="text" class="form-control" id="name1" placeholder="Enter name" name="name">
     <label for="name">Product price:</label>
-    <input type="text" class="form-control" id="price1" placeholder="Enter name" name="price1">
+    <input type="text" class="form-control" id="price1" placeholder="Enter name" name="price">
     <label for="name">Product detail:</label>
-    <input type="text" class="form-control" id="details1" placeholder="Enter details" name="details1">
+    <input type="text" class="form-control" id="details1" placeholder="Enter details" name="details">
     <button type="submit" class="btn btn-primary">update</button>
   </form>
 </div>
