@@ -89,19 +89,19 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $success;
             }
-        $query = 'UPDATE public.products SET code = $1, image=$2, name=$3, price=$4, details=$5 WHERE code =$1 returning code';
+        $query = 'UPDATE public.products SET image=$2, name=$3, price=$4, details=$5 WHERE code =$1';
         $params = array(&$code, &$image, &$name, &$price, &$details);
-        $res = pg_query_params ($conn,$query,$params);
+        $res = pg_query_params($conn,$query,$params);
         $row =  pg_fetch_row($res);
         $success = $row[0];
         $this->msg = "";
-        pg_close ($conn);
+        pg_close($conn);
         if ($res === FALSE) {
-            $this ->msg = "Error in executing query.";
+            $this->msg = "Error in executing query.";
             return $success;
         }
         }catch (Exception $e){
-                $this -> msg = $e ->getMessage();
+                $this->msg = $e->getMessage();
                 $success = -1;
         }
     } 
