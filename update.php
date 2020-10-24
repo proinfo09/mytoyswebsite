@@ -1,8 +1,12 @@
 <?php
  include ('productCRUD.php');
+ if(isset($POST['update'])) {
+
  $obj = new productCRUD();
- $obj -> updateProduct ($_POST['code'], $_POST['image'], $_POST['name'], $_POST['price'], $_POST['details'] );
+ $success = $obj -> updateProduct ($_POST['code'], $_POST['image'], $_POST['name'], $_POST['price'], $_POST['details'] );
+ echo ($_GET['code1']);
  header ('Location: index.php');
+ }
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +32,7 @@
     <input type="text" class="form-control" id="price" placeholder="Enter name" name="price">
     <label for="name">Product detail:</label>
     <input type="text" class="form-control" id="details" placeholder="Enter details" name="details">
-    <button type="submit" class="btn btn-primary">update</button>
+    <button type="submit" class="btn btn-primary" name = "update">update</button>
   </form>
 </div>
 
