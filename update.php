@@ -22,7 +22,7 @@
         <h2>Update Toy</h2>
         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
             <label for="code">Product Code:</label>
-            <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $_GET['code1'] ?> disabled>
+            <input type="number" class="form-control" id="code" placeholder="Enter code" name="code" VALUE = <?php echo $_GET['code1'] ,'disabled='disabled'; ?>>
             <label for="name">Product Name:</label>
             <input type="text" class="form-control" id="name" placeholder="Enter name" name="name"  VALUE = <?php echo $_GET['name'] ?>>
             <label for="name">Product Price:</label>
