@@ -21,7 +21,7 @@ class ProductCRUD
 	                        FROM public.products;';
             $result = pg_query($conn, $query);
             while ($row = pg_fetch_row($result)) {
-                array_push($data, array("code" => $row[0], "image" => $row[1], "name" => $row[2], "price" => $row[3], "details" => $row[4]));
+                array_push($data, array("code" => $row[0], "name" => $row[1], "price" => $row[2], "image" => $row[3], "details" => $row[4]));
             }
             pg_close($conn);
         } catch (Exception $e) {
