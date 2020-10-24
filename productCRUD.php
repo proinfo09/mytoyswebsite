@@ -30,6 +30,8 @@ class ProductCRUD
         }
         return $data;
     }
+
+    
     public function createProduct($code, $image, $name, $price, $details)
     {
         $data = array();
@@ -121,6 +123,7 @@ class ProductCRUD
             while ($row = pg_fetch_row($result)) {
                 array_push($data, array("code" => $row[0], "image" => $row[1], "name" => $row[2], "price" => $row[3], "details" => $row[4]));
             }
+            
             pg_close($conn);
         } catch (Exception $e) {
             $this->msg = $e->getMessage();
