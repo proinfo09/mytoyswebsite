@@ -28,7 +28,7 @@
             $obj = new ProductCRUD();
             $data = $obj->selectProduct();
             foreach($data as $item){
-                foreach($item as $key -> $value){   
+                foreach($item as $key => $value){   
             
         ?>
             <label for="code">Product Code:</label>
