@@ -1,10 +1,10 @@
 <?php
  include ('productCRUD.php');
  if(isset($_POST['update'])) {
- $obj = new productCRUD();
- $success = $obj -> updateProduct ($_POST['code'], $_POST['image'], $_POST['name'], $_POST['price'], $_POST['details'] );
- echo ($_GET['code1']);
- header ('Location: index.php');
+    $obj = new productCRUD();
+    $success = $obj -> updateProduct ($_POST['code'], $_POST['image'], $_POST['name'], $_POST['price'], $_POST['details'] );
+    echo ($_GET['code1']);
+    header ('Location: index.php');
  }
 ?>
 

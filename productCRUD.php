@@ -92,8 +92,8 @@ class ProductCRUD
         $query = 'UPDATE public.products SET code =$1, image=$2, name=$3, price=$4, details=$5 WHERE code =$1;';
         $params = array(&$code, &$image, &$name, &$price, &$details);
         $res = pg_query_params ($conn,$query,$params);
-        $num_rows = pg_connect-affected_rows ($res);
-        $success = $num_rows;
+        $row =  pg_fetch_row($res);
+        $success = $row[0];
         $this->msg = "";
         pg_close ($conn);
         if ($res === FALSE) {
