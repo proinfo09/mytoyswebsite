@@ -65,7 +65,7 @@ class ProductCRUD
                 $this->msg = "Fail";
                 return $success;
             }
-            $query = 'DELETE FROM products WHERE code=$1';
+            $query = 'DELETE FROM public.products WHERE code=$1';
             $params = array(&$code1);
             $res = pg_query_params($conn, $query, $params);
             $row =  pg_affected_rows($res);
