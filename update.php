@@ -21,14 +21,14 @@
   <h2>Update item</h2>
   <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
     <label for="name">Product image:</label>
-    <input type="text" class="form-control" id="image" placeholder="Enter image" name="image">
+    <input type="text" class="form-control" id="image1" placeholder="Enter image" name="image1">
     <label for="name">Product name:</label>
-    <input type="text" class="form-control" id="name" placeholder="Enter name" name="name">
+    <input type="text" class="form-control" id="name1" placeholder="Enter name" name="name1">
     <label for="name">Product price:</label>
-    <input type="text" class="form-control" id="price" placeholder="Enter name" name="price">
+    <input type="text" class="form-control" id="price1" placeholder="Enter name" name="price1">
     <label for="name">Product detail:</label>
-    <input type="text" class="form-control" id="details" placeholder="Enter details" name="details">
-    <button type="submit" class="btn btn-primary" name= "update">update</button>
+    <input type="text" class="form-control" id="details1" placeholder="Enter details" name="details1">
+    <button type="submit" class="btn btn-primary">update</button>
   </form>
 </div>
 
