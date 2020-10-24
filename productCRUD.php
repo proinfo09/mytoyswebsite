@@ -54,33 +54,29 @@ class ProductCRUD
         }
     }
 
-    public function deleteProduct($code = false)
-    {
+    public function deleteProduct($code = FALSE){
         $success = -1;
-        try 
-        {
+        try {
             global $connString;
             $conn = pg_connect($connString);
             if ($conn === false) {
                 $this->msg = "Fail";
                 return $success;
             }
-            $query = 'DELETE FROM public.products WHERE code=$1';
+            $query = "DELETE FROM public.products WHERE code=$1";
             $params = array(&$code);
             $res = pg_query_params($conn, $query, $params);
             $row =  pg_affected_rows($res);
-            $success = $row;
+            $success = $row[1];
             $this->msg = "";
             pg_close($conn);
             if ($res === false) {
                 $this->msg = "Error query";
                 return $success;
             }
-           
         } catch (Exception $e) {
             $this->msg = $e->getMessage();
             $success =-1;
         }
     }
 }
-?>
